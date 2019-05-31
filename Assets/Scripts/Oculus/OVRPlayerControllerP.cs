@@ -1,4 +1,4 @@
-/************************************************************************************
+﻿/************************************************************************************
 Copyright : Copyright (c) Facebook Technologies, LLC and its affiliates. All rights reserved.
 
 Licensed under the Oculus Utilities SDK License Version 1.31 (the "License"); you may not use
@@ -19,7 +19,7 @@ using UnityEngine;
 /// Controls the player's movement in virtual reality.
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
-public class OVRPlayerController : MonoBehaviour
+public class OVRPlayerControllerP : MonoBehaviour
 {
 	/// <summary>
 	/// The rate acceleration during movement.
@@ -287,8 +287,8 @@ public class OVRPlayerController : MonoBehaviour
 		Vector3 predictedXZ = Vector3.Scale((Controller.transform.localPosition + moveDirection), new Vector3(1, 0, 1));
 
 		// Move contoller
-		Controller.Move(moveDirection);
-		// no thanks
+		// Controller.Move(moveDirection);
+        // no thank
 		Vector3 actualXZ = Vector3.Scale(Controller.transform.localPosition, new Vector3(1, 0, 1));
 
 		if (predictedXZ != actualXZ)
