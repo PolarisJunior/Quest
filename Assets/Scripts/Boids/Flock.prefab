@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &124335380267662657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124335380267662659}
+  - component: {fileID: 1617252973569462142}
+  m_Layer: 0
+  m_Name: Flock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &124335380267662659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124335380267662657}
+  m_LocalRotation: {x: 0.043617744, y: 0.008718251, z: -0.0003806472, w: 0.9990102}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 5, y: 1, z: 0}
+--- !u!114 &1617252973569462142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124335380267662657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87c1c41b841d524f93a886a91aa4764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flockSize: 25
+  minVelocity: 5
+  maxVelocity: 20
+  randomness: 1
+  boidPrefabs:
+  - {fileID: 1509598871792621677, guid: 5e24121c7b3b85c4587142d3ed4d42a1, type: 3}
+  - {fileID: 3504914274265399056, guid: da4ece4239b4e254087749690ca292aa, type: 3}
+  - {fileID: 8151465420365100123, guid: eecec0b33b64be2439b600def647e0fa, type: 3}
+  - {fileID: 4575293893432342171, guid: 2350f35eaa1eaeb4a853d413c56094c6, type: 3}
+  chasee: {fileID: 0}
+  flockCenter: {x: 0, y: 0, z: 0}
+  flockAlignment: {x: 0, y: 0, z: 0}
+  flockSpeed: 10
+  spawnRadius: 10
+  neighborRadius: 3
+  velocityVariation: 0.5
+  rotationCoef: 4
+  searchLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
