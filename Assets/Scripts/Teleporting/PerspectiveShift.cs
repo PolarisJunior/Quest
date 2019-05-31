@@ -348,13 +348,8 @@ public class PerspectiveShift : MonoBehaviour
         rightLaser.active = true;
         rightLaser.PointerIn += onPointerIn;
         rightLaser.PointerOut += onPointerOut;
-        Invoke("DoPrint", 5.0f);
     }
-
-    void DoPrint() {
-        Debug.Log("move and print");
-        gameObject.transform.position = new Vector3(3, 0, -5);
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -375,8 +370,8 @@ public class PerspectiveShift : MonoBehaviour
         // }
         if (teleporting)
         {
-            // if (transform.position == targetPosition && transform.rotation == target.transform.rotation) // reached destination
-            if (transform.position == targetPosition) // reached destination
+            if (transform.position == targetPosition && transform.rotation == target.transform.rotation) // reached destination
+            // if (transform.position == targetPosition) // reached destination
             {
                 teleporting = false;
                 StartCoroutine(FadeThenFinish());

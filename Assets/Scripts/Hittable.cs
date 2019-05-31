@@ -33,7 +33,7 @@ public class Hittable : MonoBehaviour
 
     void Start()
     {
-        haptics = GameObject.Find("/Haptics");
+        // haptics = GameObject.Find("/Haptics");
     }
 
     void Update()
