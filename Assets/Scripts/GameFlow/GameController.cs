@@ -1,106 +1,110 @@
-﻿// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.Events;
-// using Valve.VR.InteractionSystem;
-// // @COMMENTEDOUT
-// public class GameController : MonoBehaviour
-// {
-//     public GameObject[] puzzleOrder;
-//     public int[] numActive;
-//     public GameObject[] fadeObjects;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using Valve.VR.InteractionSystem;
+// @COMMENTEDOUT
+public class GameController : MonoBehaviour
+{
+    public GameObject[] puzzleOrder;
+    public int[] numActive;
+    public GameObject[] fadeObjects;
 
-//     public GameObject podiumPosition;
-//     public float returnDelay;
-//     public float fadeDelay;
+    public GameObject podiumPosition;
+    public float returnDelay;
+    public float fadeDelay;
 
-//     public UnityEvent onPuzzlesComplete;
+    public UnityEvent onPuzzlesComplete;
 
-//     private Fade fade;
-//     private int puzzleIndex;
-//     private int activeIndex;
+    public GameObject player;
 
-//     private void Awake()
-//     {
-//         fade = GetComponent<Fade>();
-//     }
+    private Fade fade;
+    private int puzzleIndex;
+    private int activeIndex;
 
-//     private void Start()
-//     {
-//         puzzleIndex = 0;
-//         activeIndex = 0;
-//         for (int i = puzzleIndex; i < numActive[activeIndex]; i++)
-//         {
-//             puzzleOrder[i].SetActive(true);
-//             puzzleIndex++;
-//         }
-//         activeIndex++;
-//     }
+    private void Awake()
+    {
+        fade = GetComponent<Fade>();
+    }
 
-//     public void SetNextActive()
-//     {
-//         if (puzzleIndex == puzzleOrder.Length)
-//         {
-//             onPuzzlesComplete.Invoke();
-//         }
-//         else
-//         {
-//             for (int i = 0; i < numActive[activeIndex]; i++)
-//             {
-//                 puzzleOrder[puzzleIndex].SetActive(true);
-//                 puzzleIndex++;
-//             }
-//             activeIndex++;
-//         }
-//     }
+    private void Start()
+    {
+        puzzleIndex = 0;
+        activeIndex = 0;
+        for (int i = puzzleIndex; i < numActive[activeIndex]; i++)
+        {
+            puzzleOrder[i].SetActive(true);
+            puzzleIndex++;
+        }
+        activeIndex++;
+    }
 
-//     public void FadeInAll()
-//     {
-//         foreach (GameObject obj in fadeObjects)
-//         {
-//             // obj.SetActive(true);
-//             if (obj.activeInHierarchy)
-//             {
-//                 fade.FadeIn(obj);
-//             }
-//         }
-//     }
+    public void SetNextActive()
+    {
+        if (puzzleIndex == puzzleOrder.Length)
+        {
+            onPuzzlesComplete.Invoke();
+        }
+        else
+        {
+            for (int i = 0; i < numActive[activeIndex]; i++)
+            {
+                puzzleOrder[puzzleIndex].SetActive(true);
+                puzzleIndex++;
+            }
+            activeIndex++;
+        }
+    }
 
-//     public void FadeOutAll()
-//     {
-//         foreach (GameObject obj in fadeObjects)
-//         {
-//             if (obj.activeInHierarchy)
-//             {
-//                 // obj.SetActive(false);
-//                 fade.FadeOut(obj);
-//             }
-//         }
-//     }
+    public void FadeInAll()
+    {
+        foreach (GameObject obj in fadeObjects)
+        {
+            // obj.SetActive(true);
+            if (obj.activeInHierarchy)
+            {
+                fade.FadeIn(obj);
+            }
+        }
+    }
 
-//     public void GoBackToPodium()
-//     {
-//         podiumPosition.SetActive(true);
-//         podiumPosition.GetComponent<Glow>().GlowOn();
-//         StartCoroutine(TeleportBackWithDelay());
-//     }
+    public void FadeOutAll()
+    {
+        foreach (GameObject obj in fadeObjects)
+        {
+            if (obj.activeInHierarchy)
+            {
+                // obj.SetActive(false);
+                fade.FadeOut(obj);
+            }
+        }
+    }
 
-//     private IEnumerator TeleportBackWithDelay()
-//     {
-//         yield return new WaitForSeconds(returnDelay);
+    public void GoBackToPodium()
+    {
+        podiumPosition.SetActive(true);
+        podiumPosition.GetComponent<Glow>().GlowOn();
+        StartCoroutine(TeleportBackWithDelay());
+    }
 
-//         Player.instance.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
-//         podiumPosition.GetComponent<Glow>().GlowOff();
-//         podiumPosition.SetActive(false);
+    private IEnumerator TeleportBackWithDelay()
+    {
+        yield return new WaitForSeconds(returnDelay);
 
-//         yield return new WaitForSeconds(fadeDelay);
+        // Player.instance.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
+        player.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
+        podiumPosition.GetComponent<Glow>().GlowOff();
+        podiumPosition.SetActive(false);
 
-//         Player.instance.GetComponent<PerspectiveShift>().teleportEnabled = true;
+        yield return new WaitForSeconds(fadeDelay);
 
-//         // Fade In
-//         FadeInAll();
+        // Player.instance.GetComponent<PerspectiveShift>().teleportEnabled = true;
+        player.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
 
-//         // Set next puzzles active
-//         SetNextActive();
-//     }
-// }
+        // Fade In
+        FadeInAll();
+
+        // Set next puzzles active
+        SetNextActive();
+    }
+}
