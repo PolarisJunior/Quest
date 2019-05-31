@@ -6,7 +6,7 @@ public class VrOverlay : MonoBehaviour
 {
     public Camera trackedCamera;
 
-    private float offset = 0.1f;
+    private float offset = 0.2f;
     
 
     // Start is called before the first frame update
