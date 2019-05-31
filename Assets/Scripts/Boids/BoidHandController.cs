@@ -1,42 +1,45 @@
-﻿// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// // @COMMENTEDOUT
-// namespace Valve.VR.InteractionSystem
-// {
-//     public class BoidHandController : MonoBehaviour
-//     {
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+// @COMMENTEDOUT
+namespace Valve.VR.InteractionSystem
+{
+    public class BoidHandController : MonoBehaviour
+    {
 
-//         public Hand leftHand;
-//         public Hand rightHand;
+        // public Hand leftHand;
+        // public Hand rightHand;
+        public GameObject leftHand;
+        public GameObject rightHand;
 
-//         public GameObject rightTarget;
-//         public GameObject leftTarget;
+        public GameObject rightTarget;
+        public GameObject leftTarget;
 
-//         public float placementRadius = 35;
+        public float placementRadius = 35;
 
 
-//         // Update is called once per frame
-//         void Update()
-//         {
-//             if (rightHand != null && rightTarget != null)
-//             {
-//                 PlaceTarget(rightTarget, rightHand);
-//             }
+        // Update is called once per frame
+        void Update()
+        {
+            if (rightHand != null && rightTarget != null)
+            {
+                PlaceTarget(rightTarget, rightHand);
+            }
 
-//             if (leftHand != null && leftTarget != null)
-//             {
-//                 PlaceTarget(leftTarget, leftHand);
-//             }
+            if (leftHand != null && leftTarget != null)
+            {
+                PlaceTarget(leftTarget, leftHand);
+            }
 
-//         }
+        }
 
-//         void PlaceTarget(GameObject targ, Hand hand)
-//         {
-//             var dir = hand.transform.rotation * transform.forward;
-//             var pos = placementRadius * dir + hand.transform.position;
+        // void PlaceTarget(GameObject targ, Hand hand)
+        void PlaceTarget(GameObject targ, GameObject hand)
+        {
+            var dir = hand.transform.rotation * transform.forward;
+            var pos = placementRadius * dir + hand.transform.position;
 
-//             targ.transform.position = pos;
-//         }
-//     }
-// }
+            targ.transform.position = pos;
+        }
+    }
+}
